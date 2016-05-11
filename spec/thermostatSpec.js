@@ -62,4 +62,19 @@ describe("Thermostat", function() {
     expect(thermostat.powerSaving).toEqual(false);
   });
 
+  it("display color defaults to yellow", function(){
+    expect(thermostat.displayColor).toEqual('yellow');
+  });
+
+  it("display color is green if temp < 18", function(){
+    thermostat.temperature = 16;
+    thermostat.updateDisplay();
+    expect(thermostat.displayColor).toEqual('green');
+  });
+
+  it("display color is red if temp > 25", function(){
+    thermostat.temperature = 26;
+    thermostat.updateDisplay();
+    expect(thermostat.displayColor).toEqual('red');
+  });
 });

@@ -4,6 +4,7 @@ function Thermostat() {
   this.temperature = 20;
   this.tempMin = 10;
   this.powerSaving = true;
+  this.displayColor = 'yellow';
 }
 
 Thermostat.prototype.up_button = function() {
@@ -13,6 +14,7 @@ Thermostat.prototype.up_button = function() {
     if (this.temperature === this.maxTemp()) { throw new Error("Power saving mode off: max temp 32 degrees") };
   };
   this.temperature += 1;
+  this.updateDisplay
 };
 
 Thermostat.prototype.down_button = function() {
@@ -38,20 +40,14 @@ Thermostat.prototype.reset = function() {
   this.temperature = 20;
 };
 
-
-//
-// Airport.prototype.dock = function(plane) {
-//   this.isFull();
-//   this._hangar.push(plane);
-// };
-//
-// Airport.prototype.isFull = function() {
-//   if (this._hangar.length === this.MAX_CAPACITY) {
-//     throw new Error("nope, full!");
-//   }
-//   return false;
-// };
-//
-// Airport.prototype.landedPlanes = function() {
-//   return this._hangar;
-// };
+Thermostat.prototype.updateDisplay = function() {
+  if (this.temperature < 18) {
+    this.displayColor = 'green';
+  }
+  else if (this.temperature < 25) {
+    this.displayColor = 'yellow';
+  }
+  else {
+    this.displayColor = 'red'
+  };
+};
