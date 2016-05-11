@@ -34,6 +34,10 @@ Thermostat.prototype.maxTemp = function() {
   }
 };
 
+Thermostat.prototype.reset = function() {
+  this.temperature = 20;
+};
+
 
 //
 // Airport.prototype.dock = function(plane) {

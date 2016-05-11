@@ -19,6 +19,12 @@ describe("Thermostat", function() {
     expect(thermostat.temperature).toEqual(19);
   });
 
+  it("should have a temperature of 20 degrees after reset", function() {
+    thermostat.up_button();
+    thermostat.reset();
+    expect(thermostat.temperature).toEqual(20);
+  });
+
   it("should have a minimum temperature of 10 degrees", function() {
     for (var i = 1; i <= 10; i++) {
       thermostat.down_button();
