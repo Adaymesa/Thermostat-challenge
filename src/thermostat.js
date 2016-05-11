@@ -9,6 +9,8 @@ function Thermostat() {
 Thermostat.prototype.up_button = function() {
   if (this.powerSaving) {
     if (this.temperature === this.maxTemp()) { throw new Error("Power saving mode on: max temp 25 degrees") };
+  } else if(!this.powerSaving) {
+    if (this.temperature === this.maxTemp()) { throw new Error("Power saving mode off: max temp 32 degrees") };
   };
   this.temperature += 1;
 };
