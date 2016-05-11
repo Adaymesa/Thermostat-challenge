@@ -10,8 +10,13 @@ describe("Thermostat", function() {
   });
 
   it("should increase temperature with up button", function(){
-    thermostat.up_button;
+    thermostat.up_button();
     expect(thermostat.temperature).toEqual(21);
+  });
+
+  it("should decrease temperature with down button", function(){
+    thermostat.down_button();
+    expect(thermostat.temperature).toEqual(19);
   });
 
 });

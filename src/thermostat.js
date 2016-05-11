@@ -2,11 +2,15 @@
 
 function Thermostat() {
   this.temperature = 20;
-}
+};
 
-Thermostat.prototype.up_button = function {
-  this.temperature = this.temperature + 1;
-;
+Thermostat.prototype.up_button = function() {
+  this.temperature += 1;
+};
+
+Thermostat.prototype.down_button = function() {
+  this.temperature -= 1;
+};
 
 //
 // Airport.prototype.dock = function(plane) {
