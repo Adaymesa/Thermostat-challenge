@@ -32,4 +32,18 @@ describe("Thermostat", function() {
     expect(thermostat.powerSaving).toEqual(true);
   });
 
+  it("shouldn't allow higher than 25 with Power saving on", function(){
+    for (var i = 1; i<=5; i++) {
+      thermostat.up_button();
+    }
+    expect(function(){
+      thermostat.up_button();
+    }).toThrowError("Power saving mode on: max temp 25 degrees");
+  });
+
+  it("allows user to change Power Saving mode off", function(){
+    thermostat.powerSavingSwitch();
+    expect(thermostat.powerSaving).toEqual(false);
+  });
+
 });
