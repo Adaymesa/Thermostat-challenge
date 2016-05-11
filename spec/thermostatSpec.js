@@ -9,4 +9,9 @@ describe("Thermostat", function() {
     expect(thermostat.temperature).toEqual(20);
   });
 
+  it("should increase temperature with up button", function(){
+    thermostat.up_button;
+    expect(thermostat.temperature).toEqual(21);
+  });
+
 });
