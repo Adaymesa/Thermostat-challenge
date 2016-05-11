@@ -22,9 +22,17 @@ describe('Thermostat', function() {
 
  it('raises an error when temperature gets 10 degrees', function() {
  		expect(function(){thermostat.downButton(11)}).toThrowError('It can not go below 10');
+    expect(thermostat.temperature).toEqual(10);
 	});
 
+  it('has powersaving mode on by default', function(){
+    expect(thermostat.powerSaving).toEqual(true);
+  });
 
+  it('has powersaving mode on and raises error if temperature rises above 25', function(){
+  expect(function(){thermostat.upButton(6)}).toThrowError('Power saving mode is on, it cannot go above 25');
+  expect(thermostat.temperature).toEqual(25);
 });
 
 
+});
