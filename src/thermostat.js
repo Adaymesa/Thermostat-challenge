@@ -4,16 +4,15 @@ function Thermostat() {
   this.temperature = 20;
   this.tempMin = 10;
   this.powerSaving = true;
-  this.tempMax = 25;
 }
 
 Thermostat.prototype.up_button = function() {
+  if (this.powerSaving) {
+    if (this.temperature === this.maxTemp()) { throw new Error("Power saving mode on: max temp 25 degrees") };
+  };
   this.temperature += 1;
 };
 
-Thermostat.prototype.getTemperature = function() {
-  this.temperature
-};
 Thermostat.prototype.down_button = function() {
   if (this.temperature === this.tempMin) {
     throw new Error("at minimum temperature of 10 degrees");
@@ -21,8 +20,16 @@ Thermostat.prototype.down_button = function() {
   this.temperature -= 1;
 };
 
-Thermostat.prototype.powerSavingSwitch = function () {
+Thermostat.prototype.powerSavingSwitch = function() {
   this.powerSaving = !this.powerSaving;
+};
+
+Thermostat.prototype.maxTemp = function() {
+  if (this.powerSaving){
+    return 25;
+  } else {
+    return 32;
+  }
 };
 
 
