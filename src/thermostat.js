@@ -1,27 +1,32 @@
 'use strict';
 
 function Thermostat() {
-  this.temperature = 20;
-  this.tempMin = 10;
+  this.DEFAULT_TEMPERATURE = 20;
+  this.temperature = this.DEFAULT_TEMPERATURE;
+  this.MAX_LIMIT_PSM_ON = 25;
+  this.MAX_LIMIT_PSM_OFF = 32;
+  this.MIN_TEMP = 10;
   this.powerSaving = true;
   this.displayColor = 'yellow';
+  this.LOW_USAGE_LIMIT = 18;
 }
 
-Thermostat.prototype.up_button = function() {
+Thermostat.prototype.upButton = function() {
   if (this.powerSaving) {
     if (this.temperature === this.maxTemp()) { throw new Error("Power saving mode on: max temp 25 degrees") };
   } else if(!this.powerSaving) {
     if (this.temperature === this.maxTemp()) { throw new Error("Power saving mode off: max temp 32 degrees") };
   };
   this.temperature += 1;
-  this.updateDisplay
+  this.updateDisplay;
 };
 
-Thermostat.prototype.down_button = function() {
-  if (this.temperature === this.tempMin) {
+Thermostat.prototype.downButton = function() {
+  if (this.temperature === this.MIN_TEMP) {
     throw new Error("at minimum temperature of 10 degrees");
   }
   this.temperature -= 1;
+  this.updateDisplay;
 };
 
 Thermostat.prototype.powerSavingSwitch = function() {
@@ -30,21 +35,21 @@ Thermostat.prototype.powerSavingSwitch = function() {
 
 Thermostat.prototype.maxTemp = function() {
   if (this.powerSaving){
-    return 25;
+    return this.MAX_LIMIT_PSM_ON;
   } else {
-    return 32;
+    return this.MAX_LIMIT_PSM_OFF;
   }
 };
 
-Thermostat.prototype.reset = function() {
-  this.temperature = 20;
+Thermostat.prototype.resetTemp = function() {
+  this.temperature = this.DEFAULT_TEMPERATURE;
 };
 
 Thermostat.prototype.updateDisplay = function() {
-  if (this.temperature < 18) {
+  if (this.temperature < this.LOW_USAGE_LIMIT) {
     this.displayColor = 'green';
   }
-  else if (this.temperature < 25) {
+  else if (this.temperature < this.MAX_LIMIT_PSM_ON) {
     this.displayColor = 'yellow';
   }
   else {
