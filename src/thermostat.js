@@ -2,6 +2,8 @@
 
 function Thermostat() {
   this.temperature = 20;
+  this.tempMin = 10;
+  this.powerSaving = true;
 };
 
 Thermostat.prototype.up_button = function() {
@@ -9,6 +11,9 @@ Thermostat.prototype.up_button = function() {
 };
 
 Thermostat.prototype.down_button = function() {
+  if (this.temperature === this.tempMin) {
+    throw new Error("at minimum temperature of 10 degrees");
+  };
   this.temperature -= 1;
 };
 

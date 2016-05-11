@@ -19,4 +19,17 @@ describe("Thermostat", function() {
     expect(thermostat.temperature).toEqual(19);
   });
 
+  it("should have a minimum temperature of 10 degrees", function() {
+    for (var i = 1; i <= 10; i++) {
+      thermostat.down_button();
+    }
+    expect(function() {
+      thermostat.down_button();
+    }).toThrowError("at minimum temperature of 10 degrees");
+  });
+
+  it("should have power saving switched on by default", function() {
+    expect(thermostat.powerSaving).toEqual(true);
+  });
+
 });
