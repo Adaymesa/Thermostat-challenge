@@ -13,12 +13,11 @@ function Thermostat() {
 
 Thermostat.prototype.upButton = function() {
   if (this.powerSaving) {
-    if (this.temperature === this.maxTemp()) { throw new Error("Power saving mode on: max temp 25 degrees") };
+    if (this.temperature === this.maxTemp()) { throw new Error("Power saving mode on: max temp 25 degrees"); }
   } else if(!this.powerSaving) {
-    if (this.temperature === this.maxTemp()) { throw new Error("Power saving mode off: max temp 32 degrees") };
-  };
+    if (this.temperature === this.maxTemp()) { throw new Error("Power saving mode off: max temp 32 degrees"); }
+  }
   this.temperature += 1;
-  this.updateDisplay;
 };
 
 Thermostat.prototype.downButton = function() {
@@ -26,7 +25,7 @@ Thermostat.prototype.downButton = function() {
     throw new Error("at minimum temperature of 10 degrees");
   }
   this.temperature -= 1;
-  this.updateDisplay;
+  this.updateDisplay();
 };
 
 Thermostat.prototype.powerSavingSwitch = function() {
@@ -53,6 +52,6 @@ Thermostat.prototype.updateDisplay = function() {
     this.displayColor = 'yellow';
   }
   else {
-    this.displayColor = 'red'
-  };
+    this.displayColor = 'red';
+  }
 };
