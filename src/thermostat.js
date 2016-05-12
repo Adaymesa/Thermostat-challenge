@@ -25,7 +25,12 @@ Thermostat.prototype.getTemperature = function() {
   this.temperature;
 };
 
-
+Thermostat.prototype.powerSavingReport = function() {
+  if (this.powerSaving === true){
+    return "On";
+  }
+  return "Off";
+};
 
 Thermostat.prototype.downButton = function() {
   if (this.temperature === this.MIN_TEMP) {

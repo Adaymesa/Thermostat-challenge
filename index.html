@@ -8,10 +8,26 @@
     <button id="resetTemp" >Reset</button><br>
     <button id="powerSavingSwitch" >Power saving mode on/off</button>
     <h3>Current Temperature</h3>
-    $('thermostat.temperature');
+    <h3 id="temperature"></h3>
     <h3>Power Saving Mode</h3>
-    $(thermostat.powerSaving());
+    <h3 id="powerSaving"></h3>
   </center>
   <script src="src/thermostat.js"></script>
+  <script src="jquery.js"></script>
+  <script>
+  $(document).ready(function() {
+    var thermostat = new Thermostat();
+    $("#temperature").text(thermostat.temperature);
+    $("#powerSaving").text(thermostat.powerSavingReport());
+    $("#upButton").click(function() {
+      thermostat.upButton();
+      $("#temperature").text(thermostat.temperature);
+    })
+    $("#downButton").click(function() {
+      thermostat.downButton();
+      $("#temperature").text(thermostat.temperature);
+    })
+  })
+  </script>
 </body>
 </html>
