@@ -21,6 +21,12 @@ Thermostat.prototype.upButton = function() {
   this.updateDisplay();
 };
 
+Thermostat.prototype.getTemperature = function() {
+  this.temperature;
+};
+
+
+
 Thermostat.prototype.downButton = function() {
   if (this.temperature === this.MIN_TEMP) {
     throw new Error("at minimum temperature of 10 degrees");
