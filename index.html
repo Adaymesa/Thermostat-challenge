@@ -3,8 +3,8 @@
 <body>
   <center>
     <h1>Thermostat</h1>
-    <button id="upButton" >Temperature up</button>
     <button id="downButton" >Temperature down</button>
+    <button id="upButton" >Temperature up</button>
     <button id="resetTemp" >Reset</button><br>
     <button id="powerSavingSwitch" >Power saving mode on/off</button>
     <h3>Current Temperature</h3>
@@ -15,20 +15,33 @@
   <script src="jquery.js"></script>
   <script src="src/thermostat.js"></script>
   <script src="jquery.js"></script>
+  <script src="style.css"></script>
   <script>
   $(document).ready(function() {
     var thermostat = new Thermostat();
-    $("#temperature").text(thermostat.temperature);
+      updateTemperature();
     $("#powerSaving").text(thermostat.powerSavingReport());
     $("#upButton").click(function() {
       thermostat.upButton();
-      $("#temperature").text(thermostat.temperature);
+      updateTemperature();
     })
     $("#downButton").click(function() {
       thermostat.downButton();
-      $("#temperature").text(thermostat.temperature);
+      updateTemperature();
     })
-  })
+    $("#resetTemp").click(function() {
+      thermostat.resetTemp();
+      updateTemperature();
+    })
+    $("#powerSavingSwitch").click(function() {
+      thermostat.powerSavingSwitch();
+    $("#powerSaving").text(thermostat.powerSavingReport());
+    })
+    function updateTemperature() {
+      $('#temperature').text(thermostat.temperature);
+      $('#temperature').css('color', thermostat.displayColor);
+    };
+   })
   </script>
 </body>
 </html>
