@@ -18,6 +18,7 @@ Thermostat.prototype.upButton = function() {
     if (this.temperature === this.maxTemp()) { throw new Error("Power saving mode off: max temp 32 degrees"); }
   }
   this.temperature += 1;
+  this.updateDisplay();
 };
 
 Thermostat.prototype.downButton = function() {
