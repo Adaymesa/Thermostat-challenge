@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <link rel="stylesheet" href="public/css/style.css" />
+    <title>Thermostat</title>
+</head>
 <body>
   <center>
     <h1>Thermostat</h1>
@@ -12,36 +16,8 @@
     <h3>Power Saving Mode</h3>
     <h3 id="powerSaving"></h3>
   </center>
-  <script src="jquery.js"></script>
+  <script src="src/jquery.js"></script>
   <script src="src/thermostat.js"></script>
-  <script src="jquery.js"></script>
-  <script src="style.css"></script>
-  <script>
-  $(document).ready(function() {
-    var thermostat = new Thermostat();
-      updateTemperature();
-    $("#powerSaving").text(thermostat.powerSavingReport());
-    $("#upButton").click(function() {
-      thermostat.upButton();
-      updateTemperature();
-    })
-    $("#downButton").click(function() {
-      thermostat.downButton();
-      updateTemperature();
-    })
-    $("#resetTemp").click(function() {
-      thermostat.resetTemp();
-      updateTemperature();
-    })
-    $("#powerSavingSwitch").click(function() {
-      thermostat.powerSavingSwitch();
-    $("#powerSaving").text(thermostat.powerSavingReport());
-    })
-    function updateTemperature() {
-      $('#temperature').text(thermostat.temperature);
-      $('#temperature').css('color', thermostat.displayColor);
-    };
-   })
-  </script>
+  <script src="src/interface.js"></script>
 </body>
 </html>

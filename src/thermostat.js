@@ -7,7 +7,6 @@ function Thermostat() {
   this.MAX_LIMIT_PSM_OFF = 32;
   this.MIN_TEMP = 10;
   this.powerSaving = true;
-  this.displayColor = 'yellow';
   this.LOW_USAGE_LIMIT = 18;
 }
 
@@ -58,12 +57,12 @@ Thermostat.prototype.resetTemp = function() {
 
 Thermostat.prototype.updateDisplay = function() {
   if (this.temperature < this.LOW_USAGE_LIMIT) {
-    this.displayColor = 'green';
+    return 'low-usage';
   }
   else if (this.temperature < this.MAX_LIMIT_PSM_ON) {
-    this.displayColor = 'yellow';
+    return 'medium-usage';
   }
   else {
-    this.displayColor = 'red';
+    return 'high-usage'
   }
 };
